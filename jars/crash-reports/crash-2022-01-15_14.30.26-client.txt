@@ -1,0 +1,90 @@
+---- Minecraft Crash Report ----
+// Why did you do that?
+
+Time: 15.01.22, 14:30
+Description: Unexpected error
+
+java.lang.NullPointerException: Cannot invoke "beta.tiredb56.module.impl.list.world.ScaffoldWalk.isState()" because the return value of "beta.tiredb56.module.impl.list.world.ScaffoldWalk.getInstance()" is null
+	at net.minecraft.util.MovingObjectPosition.getBlockPos(MovingObjectPosition.java:53)
+	at net.minecraft.client.renderer.RenderGlobal.drawSelectionBox(RenderGlobal.java:2631)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorldPass(EntityRenderer.java:1577)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1383)
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1211)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1074)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:477)
+	at net.minecraft.client.main.Main.main(Main.java:113)
+	at Start.main(Start.java:11)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at net.minecraft.util.MovingObjectPosition.getBlockPos(MovingObjectPosition.java:53)
+	at net.minecraft.client.renderer.RenderGlobal.drawSelectionBox(RenderGlobal.java:2631)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorldPass(EntityRenderer.java:1577)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1383)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player453'/359, l='MpServer', x=576,50, y=68,00, z=174,50]]
+	Chunk stats: MultiplayerChunkCache: 210, 210
+	Level seed: 0
+	Level generator: ID 02 - largeBiomes, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: 584,00,64,00,166,00 - World: (584,64,166), Chunk: (at 8,4,6 in 36,10; contains blocks 576,0,160 to 591,255,175), Region: (1,0; contains chunks 32,0 to 63,31, blocks 512,0,0 to 1023,255,511)
+	Level time: 1700 game time, 1080 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 131 total; [EntityCreeper['Creeper'/519, l='MpServer', x=636,50, y=24,00, z=198,50], EntityZombie['Zombie'/520, l='MpServer', x=559,50, y=15,00, z=163,50], EntityZombie['Zombie'/521, l='MpServer', x=535,50, y=47,00, z=197,50], EntitySkeleton['Skeleton'/522, l='MpServer', x=531,50, y=57,00, z=181,50], EntityFallingBlock['Falling Block'/525, l='MpServer', x=611,50, y=10,60, z=121,50], EntityFallingBlock['Falling Block'/526, l='MpServer', x=611,50, y=10,60, z=122,50], EntityFallingBlock['Falling Block'/527, l='MpServer', x=612,50, y=11,67, z=120,50], EntityFallingBlock['Falling Block'/528, l='MpServer', x=612,50, y=11,67, z=121,50], EntityFallingBlock['Falling Block'/529, l='MpServer', x=612,50, y=11,67, z=122,50], EntityFallingBlock['Falling Block'/530, l='MpServer', x=613,50, y=11,67, z=122,50], EntityFallingBlock['Falling Block'/531, l='MpServer', x=611,50, y=10,60, z=123,50], EntityFallingBlock['Falling Block'/532, l='MpServer', x=611,50, y=10,60, z=124,50], EntityFallingBlock['Falling Block'/533, l='MpServer', x=612,50, y=10,60, z=124,50], EntityFallingBlock['Falling Block'/534, l='MpServer', x=612,50, y=11,67, z=123,50], EntityFallingBlock['Falling Block'/535, l='MpServer', x=613,50, y=11,67, z=123,50], EntityFallingBlock['Falling Block'/536, l='MpServer', x=613,50, y=11,67, z=124,50], EntityFallingBlock['Falling Block'/537, l='MpServer', x=614,50, y=10,60, z=124,50], EntityFallingBlock['Falling Block'/538, l='MpServer', x=611,50, y=9,56, z=125,50], EntityFallingBlock['Falling Block'/539, l='MpServer', x=612,50, y=10,60, z=125,50], EntityFallingBlock['Falling Block'/540, l='MpServer', x=613,50, y=10,60, z=125,50], EntityFallingBlock['Falling Block'/541, l='MpServer', x=614,50, y=9,56, z=125,50], EntityFallingBlock['Falling Block'/542, l='MpServer', x=612,50, y=10,60, z=126,50], EntityFallingBlock['Falling Block'/543, l='MpServer', x=613,50, y=10,60, z=126,50], EntityFallingBlock['Falling Block'/544, l='MpServer', x=611,50, y=9,56, z=126,50], EntityFallingBlock['Falling Block'/545, l='MpServer', x=614,50, y=9,56, z=126,50], EntityFallingBlock['Falling Block'/546, l='MpServer', x=612,50, y=9,56, z=127,50], EntityFallingBlock['Falling Block'/547, l='MpServer', x=613,50, y=9,56, z=127,50], EntityFallingBlock['Falling Block'/548, l='MpServer', x=611,50, y=9,56, z=127,50], EntityFallingBlock['Falling Block'/549, l='MpServer', x=614,50, y=9,56, z=127,50], EntityFallingBlock['Falling Block'/550, l='MpServer', x=612,50, y=11,67, z=151,50], EntityFallingBlock['Falling Block'/551, l='MpServer', x=612,50, y=11,67, z=152,50], EntityFallingBlock['Falling Block'/552, l='MpServer', x=613,50, y=10,60, z=151,50], EntityFallingBlock['Falling Block'/553, l='MpServer', x=613,50, y=10,60, z=152,50], EntityFallingBlock['Falling Block'/554, l='MpServer', x=613,50, y=10,60, z=153,50], EntityFallingBlock['Falling Block'/555, l='MpServer', x=611,50, y=11,67, z=151,50], EntityFallingBlock['Falling Block'/556, l='MpServer', x=612,50, y=11,67, z=150,50], EntityFallingBlock['Falling Block'/557, l='MpServer', x=611,50, y=11,67, z=152,50], EntityFallingBlock['Falling Block'/558, l='MpServer', x=611,50, y=12,67, z=150,50], EntityFallingBlock['Falling Block'/559, l='MpServer', x=610,50, y=11,67, z=151,50], EntityFallingBlock['Falling Block'/560, l='MpServer', x=609,50, y=11,67, z=150,50], EntityFallingBlock['Falling Block'/561, l='MpServer', x=610,50, y=10,60, z=152,50], EntityFallingBlock['Falling Block'/562, l='MpServer', x=610,50, y=12,67, z=149,50], EntityFallingBlock['Falling Block'/563, l='MpServer', x=610,50, y=12,67, z=150,50], EntityFallingBlock['Falling Block'/564, l='MpServer', x=611,50, y=12,67, z=149,50], EntityFallingBlock['Falling Block'/565, l='MpServer', x=612,50, y=11,67, z=149,50], EntityFallingBlock['Falling Block'/566, l='MpServer', x=609,50, y=12,67, z=149,50], EntityFallingBlock['Falling Block'/567, l='MpServer', x=610,50, y=13,67, z=148,50], EntityFallingBlock['Falling Block'/568, l='MpServer', x=611,50, y=12,67, z=148,50], EntityFallingBlock['Falling Block'/569, l='MpServer', x=608,50, y=13,67, z=149,50], EntityFallingBlock['Falling Block'/570, l='MpServer', x=609,50, y=13,67, z=148,50], EntityFallingBlock['Falling Block'/571, l='MpServer', x=608,50, y=14,67, z=148,50], EntityZombie['Zombie'/360, l='MpServer', x=585,50, y=28,00, z=164,50], EntityFallingBlock['Falling Block'/619, l='MpServer', x=612,50, y=20,96, z=271,50], EntityFallingBlock['Falling Block'/620, l='MpServer', x=627,50, y=5,86, z=248,50], EntityBat['Bat'/365, l='MpServer', x=631,97, y=36,90, z=174,54], EntityFallingBlock['Falling Block'/621, l='MpServer', x=626,50, y=5,86, z=246,50], EntityFallingBlock['Falling Block'/622, l='MpServer', x=626,50, y=5,86, z=248,50], EntityFallingBlock['Falling Block'/623, l='MpServer', x=627,50, y=5,86, z=246,50], EntityFallingBlock['Falling Block'/624, l='MpServer', x=627,50, y=5,86, z=247,50], EntityFallingBlock['Falling Block'/625, l='MpServer', x=626,50, y=5,00, z=245,50], EntityFallingBlock['Falling Block'/626, l='MpServer', x=624,50, y=4,86, z=246,50], EntityFallingBlock['Falling Block'/627, l='MpServer', x=625,50, y=5,86, z=246,50], EntityFallingBlock['Falling Block'/628, l='MpServer', x=625,50, y=5,86, z=247,50], EntityPlayerSP['Player453'/359, l='MpServer', x=576,50, y=68,00, z=174,50], EntityEnderman['Enderman'/375, l='MpServer', x=547,50, y=55,00, z=188,50], EntityCreeper['Creeper'/377, l='MpServer', x=544,50, y=56,00, z=188,50], EntityCreeper['Creeper'/378, l='MpServer', x=541,50, y=56,00, z=182,50], EntityBat['Bat'/379, l='MpServer', x=629,42, y=36,27, z=174,52], EntityBat['Bat'/380, l='MpServer', x=632,83, y=35,77, z=176,32], EntityBat['Bat'/382, l='MpServer', x=505,76, y=13,05, z=248,63], EntityFallingBlock['Falling Block'/640, l='MpServer', x=624,50, y=6,23, z=246,50], EntitySkeleton['Skeleton'/643, l='MpServer', x=637,50, y=24,00, z=198,50], EntityFallingBlock['Falling Block'/648, l='MpServer', x=697,50, y=25,65, z=126,50], EntityFallingBlock['Falling Block'/649, l='MpServer', x=695,50, y=16,59, z=285,50], EntityFallingBlock['Falling Block'/650, l='MpServer', x=697,50, y=18,59, z=285,50], EntityFallingBlock['Falling Block'/651, l='MpServer', x=694,50, y=16,59, z=285,50], EntityFallingBlock['Falling Block'/652, l='MpServer', x=694,50, y=18,59, z=283,50], EntitySkeleton['Skeleton'/655, l='MpServer', x=545,50, y=55,00, z=184,50], EntityZombie['Zombie'/656, l='MpServer', x=570,50, y=39,00, z=156,50], EntityFallingBlock['Falling Block'/657, l='MpServer', x=695,50, y=18,65, z=282,50], EntityFallingBlock['Falling Block'/658, l='MpServer', x=694,50, y=19,65, z=283,50], EntityFallingBlock['Falling Block'/659, l='MpServer', x=693,50, y=16,65, z=285,50], EntityFallingBlock['Falling Block'/660, l='MpServer', x=692,50, y=17,65, z=285,50], EntityFallingBlock['Falling Block'/661, l='MpServer', x=693,50, y=19,65, z=282,50], EntityZombie['Zombie'/406, l='MpServer', x=586,50, y=28,00, z=160,50], EntityFallingBlock['Falling Block'/662, l='MpServer', x=693,50, y=19,65, z=283,50], EntityBat['Bat'/407, l='MpServer', x=504,45, y=14,20, z=250,51], EntityFallingBlock['Falling Block'/663, l='MpServer', x=694,50, y=19,65, z=282,50], EntityBat['Bat'/408, l='MpServer', x=578,54, y=52,05, z=133,90], EntityFallingBlock['Falling Block'/664, l='MpServer', x=692,50, y=19,65, z=283,50], EntityBat['Bat'/409, l='MpServer', x=580,88, y=52,14, z=131,18], EntityFallingBlock['Falling Block'/665, l='MpServer', x=691,50, y=19,65, z=283,50], EntityBat['Bat'/410, l='MpServer', x=581,97, y=52,76, z=131,97], EntityFallingBlock['Falling Block'/666, l='MpServer', x=692,50, y=19,65, z=282,50], EntityFallingBlock['Falling Block'/667, l='MpServer', x=696,50, y=12,65, z=284,50], EntityFallingBlock['Falling Block'/668, l='MpServer', x=697,50, y=13,65, z=283,50], EntityZombie['Zombie'/413, l='MpServer', x=601,50, y=34,00, z=185,50], EntityFallingBlock['Falling Block'/669, l='MpServer', x=697,50, y=14,65, z=284,50], EntityZombie['Zombie'/414, l='MpServer', x=601,50, y=34,00, z=189,50], EntityFallingBlock['Falling Block'/670, l='MpServer', x=698,50, y=12,65, z=283,50], EntityZombie['Zombie'/415, l='MpServer', x=601,50, y=34,00, z=187,50], EntityFallingBlock['Falling Block'/671, l='MpServer', x=698,50, y=14,65, z=284,50], EntityZombie['Zombie'/416, l='MpServer', x=605,50, y=34,00, z=188,50], EntityFallingBlock['Falling Block'/672, l='MpServer', x=695,50, y=12,65, z=283,50], EntityFallingBlock['Falling Block'/673, l='MpServer', x=696,50, y=13,65, z=282,50], EntityFallingBlock['Falling Block'/674, l='MpServer', x=696,50, y=13,65, z=283,50], EntityFallingBlock['Falling Block'/675, l='MpServer', x=697,50, y=13,65, z=282,50], EntityFallingBlock['Falling Block'/676, l='MpServer', x=698,50, y=13,76, z=282,50], EntityCreeper['Creeper'/179, l='MpServer', x=533,50, y=23,00, z=131,50], EntitySkeleton['Skeleton'/710, l='MpServer', x=544,50, y=55,00, z=185,50], EntitySkeleton['Skeleton'/711, l='MpServer', x=548,50, y=55,00, z=186,50], EntitySquid['Squid'/202, l='MpServer', x=555,42, y=60,62, z=117,15], EntitySquid['Squid'/203, l='MpServer', x=551,42, y=61,46, z=119,19], EntitySquid['Squid'/204, l='MpServer', x=550,59, y=61,04, z=114,52], EntitySquid['Squid'/205, l='MpServer', x=549,94, y=61,10, z=113,44], EntitySkeleton['Skeleton'/461, l='MpServer', x=635,50, y=22,00, z=221,50], EntitySkeleton['Skeleton'/462, l='MpServer', x=635,50, y=22,00, z=222,50], EntityCreeper['Creeper'/720, l='MpServer', x=498,50, y=41,00, z=158,50], EntityCreeper['Creeper'/721, l='MpServer', x=498,50, y=41,00, z=156,50], EntitySkeleton['Skeleton'/722, l='MpServer', x=497,50, y=41,00, z=157,50], EntityZombie['Zombie'/211, l='MpServer', x=563,50, y=24,00, z=165,50], EntityFallingBlock['Falling Block'/472, l='MpServer', x=558,50, y=51,68, z=183,50], EntityCreeper['Creeper'/728, l='MpServer', x=548,50, y=58,00, z=179,50], EntityFallingBlock['Falling Block'/473, l='MpServer', x=558,50, y=51,68, z=184,50], EntityFallingBlock['Falling Block'/474, l='MpServer', x=558,50, y=51,68, z=185,50], EntityZombie['Zombie'/490, l='MpServer', x=560,50, y=15,00, z=163,50], EntityFallingBlock['Falling Block'/493, l='MpServer', x=590,50, y=52,97, z=137,50], EntitySpider['Spider'/503, l='MpServer', x=560,50, y=24,00, z=205,50], EntityFallingBlock['Falling Block'/506, l='MpServer', x=592,50, y=53,29, z=136,50], EntityFallingBlock['Falling Block'/507, l='MpServer', x=607,50, y=6,94, z=168,50], EntityFallingBlock['Falling Block'/508, l='MpServer', x=607,50, y=7,94, z=167,50]]
+	Retry entities: 0 total; []
+	Server brand: vanilla
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:407)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2382)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:495)
+	at net.minecraft.client.main.Main.main(Main.java:113)
+	at Start.main(Start.java:11)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 16.0.2, Amazon.com Inc.
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Amazon.com Inc.
+	Memory: 575626440 bytes (548 MB) / 1174405120 bytes (1120 MB) up to 4282384384 bytes (4084 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 13, tallocated: 99
+	Launched Version: mcp
+	LWJGL: 2.9.4
+	OpenGL: NVIDIA GeForce GTX 1050 Ti/PCIe/SSE2 GL version 4.6.0 NVIDIA 497.09, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 12x AMD Ryzen 5 3600 6-Core Processor 
+	OptiFine Version: OptiFine_1.8.9_HD_U_M5
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 8
+	Mipmaps: 1
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 497.09
+	OpenGlRenderer: NVIDIA GeForce GTX 1050 Ti/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 12
