@@ -1,10 +1,9 @@
 package me.felix.tired;
 
-
 /*
 Tired is a Multithreading Minecraft modification which provides a good gaming experience
 @Tired-Client.de©
- */
+*/
 
 import me.felix.tired.threadding.MainThread;
 
