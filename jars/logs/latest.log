@@ -175,3 +175,6 @@ java.lang.ClassNotFoundException: com.mojang.realmsclient.gui.screens.RealmsNoti
 	at Start.main(Start.java:11) [classes/:?]
 [21:35:34] [Client thread/INFO]: [OptiFine] *** Reloading custom textures ***
 [21:35:34] [Client thread/INFO]: [OptiFine] Enable face culling: acacia_leaves, birch_leaves, dark_oak_leaves, jungle_leaves, oak_leaves, spruce_leaves
+[21:44:40] [Client thread/INFO]: Stopping!
+[21:44:40] [Client thread/INFO]: SoundSystem shutting down...
+[21:44:40] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
