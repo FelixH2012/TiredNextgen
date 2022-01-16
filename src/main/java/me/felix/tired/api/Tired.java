@@ -16,8 +16,11 @@ public class Tired {
 
     private final Managers managers = new Managers();
     private final ArrayList<Plugin> plugins = new ArrayList<>();
+
+    //Cant use the thread manager because we need to create a new glContext then.
     @Getter
     private final ShaderManager shaderManager = new ShaderManager();
+
     public Tired() {
         tired = this;
     }

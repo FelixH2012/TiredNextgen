@@ -2,9 +2,9 @@ package me.felix.tired.modification.visual;
 
 
 import me.felix.tired.api.Tired;
-import me.felix.tired.bridge.hooks.FontHook;
 import me.felix.tired.bridge.event.EventTargeto;
 import me.felix.tired.bridge.event.list.Render2DEvent;
+import me.felix.tired.bridge.hooks.FontHook;
 import me.felix.tired.modification.Module;
 import me.felix.tired.modification.ModuleCategory;
 

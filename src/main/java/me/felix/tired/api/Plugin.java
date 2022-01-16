@@ -3,7 +3,9 @@ package me.felix.tired.api;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 @AllArgsConstructor @Getter
 public class Plugin {

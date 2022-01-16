@@ -21,4 +21,15 @@ public class ModuleManager {
             }
         });
     }
+
+
+    public <T extends Module> T getModule(Class<T> clazz) {
+        return (T) modules.stream().filter(module -> module.getClass().equals(clazz)).findAny().orElse(null);
+    }
+
+    public <T extends Module> T getModule(String name) {
+        return (T) modules.stream().filter(module -> module.getName().equalsIgnoreCase(name)).findAny().orElse(null);
+    }
+
+
 }

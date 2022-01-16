@@ -6,14 +6,14 @@ uniform vec2 coords;
 uniform float blurRadius;
 uniform float blursigma;
 
-float CalcGauss(float x, float sigma)
-{
+    float CalcGauss(float x, float sigma)
+    {
 
-    float sigmaMultiplication =  ((blursigma * blursigma));
-    if (blursigma <= 0.0)
-    return 0.0;
-    return (exp(-.5 * x * x / (sigmaMultiplication))/ blursigma) * .4;
-}
+        float sigmaMultiplication =  ((blursigma * blursigma));
+        if (blursigma <= 0.0)
+        return 0.0;
+        return (exp(-.5 * x * x / (sigmaMultiplication))/ blursigma) * .4;
+    }
 
 
 void main() {

@@ -27,6 +27,16 @@ public class FontRendering extends CFont implements MCHook {
         this.drawString(text, x, y, color, false);
     }
 
+    public void drawCenteredStringWithShadow(String text, float x, float y, int color) {
+        this.drawString(text, x - (float) (this.getStringWidth(text) / 2), y + 1, Color.BLACK.getRGB());
+        this.drawString(text, x - (float) (this.getStringWidth(text) / 2), y, color);
+    }
+
+    public void drawCenteredString(String text, float x, float y, int color) {
+        this.drawString(text, x - (float) (this.getStringWidth(text) / 2), y, color);
+    }
+
+
     public void drawString(String text, double x, double y, int color) {
         this.drawString(text, x, y, color, false);
     }

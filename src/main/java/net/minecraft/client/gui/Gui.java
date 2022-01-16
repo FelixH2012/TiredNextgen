@@ -74,10 +74,46 @@ public class Gui
         GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
         GlStateManager.color(f, f1, f2, f3);
         worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181705_e);
-        worldrenderer.func_181662_b((double)left, (double)bottom, 0.0D).func_181675_d();
-        worldrenderer.func_181662_b((double)right, (double)bottom, 0.0D).func_181675_d();
-        worldrenderer.func_181662_b((double)right, (double)top, 0.0D).func_181675_d();
-        worldrenderer.func_181662_b((double)left, (double)top, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(left, bottom, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(right, bottom, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(right, top, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(left, top, 0.0D).func_181675_d();
+        tessellator.draw();
+        GlStateManager.enableTexture2D();
+        GlStateManager.disableBlend();
+    }
+
+    public static void drawRect(double left, double top, double right, double bottom, int color)
+    {
+        if (left < right)
+        {
+            int i = (int) left;
+            left = right;
+            right = i;
+        }
+
+        if (top < bottom)
+        {
+            int j = (int) top;
+            top = bottom;
+            bottom = j;
+        }
+
+        float f3 = (float)(color >> 24 & 255) / 255.0F;
+        float f = (float)(color >> 16 & 255) / 255.0F;
+        float f1 = (float)(color >> 8 & 255) / 255.0F;
+        float f2 = (float)(color & 255) / 255.0F;
+        Tessellator tessellator = Tessellator.getInstance();
+        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+        GlStateManager.enableBlend();
+        GlStateManager.disableTexture2D();
+        GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+        GlStateManager.color(f, f1, f2, f3);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181705_e);
+        worldrenderer.func_181662_b(left, bottom, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(right, bottom, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(right, top, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(left, top, 0.0D).func_181675_d();
         tessellator.draw();
         GlStateManager.enableTexture2D();
         GlStateManager.disableBlend();

@@ -1,9 +1,11 @@
 package me.felix.tired.threads;
 
+import me.felix.tired.api.Tired;
 import me.felix.tired.bridge.Managers;
 import me.felix.tired.bridge.event.EventManager;
 import me.felix.tired.bridge.managers.ModuleManager;
-import me.felix.tired.api.Tired;
+import me.felix.tired.bridge.setting.SettingsManager;
+import me.felix.tired.logger.Logger;
 
 import java.lang.reflect.Field;
 
@@ -12,7 +14,11 @@ public class ManagerThread extends Thread {
     @Override
     public void run() {
         addManager(new ModuleManager());
+        Logger.doLog("ModuleManger is working fine!", Logger.LoggingType.CONSOLE);
         addManager(new EventManager());
+        Logger.doLog("EventManager is working fine!", Logger.LoggingType.CONSOLE);
+        addManager(new SettingsManager());
+        Logger.doLog("SettingsManager is working fine!", Logger.LoggingType.CONSOLE);
         super.run();
     }
 

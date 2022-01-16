@@ -2,8 +2,8 @@ package me.felix.tired.modification;
 
 import lombok.Getter;
 import lombok.Setter;
-import me.felix.tired.bridge.event.Listener;
 import me.felix.tired.api.Tired;
+import me.felix.tired.bridge.event.Listener;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

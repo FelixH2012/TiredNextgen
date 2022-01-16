@@ -1,8 +1,8 @@
 package me.felix.tired.logger;
 
 import lombok.experimental.UtilityClass;
-import me.felix.tired.main.Main;
 import me.felix.tired.bridge.MCHook;
+import me.felix.tired.main.Main;
 import net.minecraft.util.ChatComponentText;
 
 @UtilityClass
