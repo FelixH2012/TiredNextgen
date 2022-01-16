@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.paulscode:codecwav:20101023">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/paulscode/codecwav/20101023/codecwav-20101023.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/paulscode/codecwav/20101023/codecwav-20101023-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/paulscode/codecwav/20101023/codecwav-20101023-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

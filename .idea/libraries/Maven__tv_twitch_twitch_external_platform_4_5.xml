@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: tv.twitch:twitch-external-platform:4.5">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/tv/twitch/twitch-external-platform/4.5/twitch-external-platform-4.5.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/tv/twitch/twitch-external-platform/4.5/twitch-external-platform-4.5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/tv/twitch/twitch-external-platform/4.5/twitch-external-platform-4.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
