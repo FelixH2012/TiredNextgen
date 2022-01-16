@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.paulscode:libraryjavasound:20101123">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

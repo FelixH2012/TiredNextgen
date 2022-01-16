@@ -1,12 +1,9 @@
 package net.optifine;
 
 import com.google.common.collect.Iterators;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+
+import java.util.*;
+
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.LongHashMap;
 import net.minecraft.world.ChunkCoordIntPair;
@@ -144,7 +141,7 @@ public class NextTickHashSet extends TreeSet
         }
         else if (this.size() <= 0)
         {
-            return Iterators.emptyIterator();
+            return Collections.emptyIterator();
         }
         else
         {
@@ -169,7 +166,7 @@ public class NextTickHashSet extends TreeSet
 
             if (list.size() <= 0)
             {
-                return Iterators.emptyIterator();
+                return Collections.emptyIterator();
             }
             else if (list.size() == 1)
             {

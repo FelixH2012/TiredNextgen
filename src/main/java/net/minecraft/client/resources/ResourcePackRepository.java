@@ -4,10 +4,8 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.hash.Hashing;
 import com.google.common.io.Files;
-import com.google.common.util.concurrent.FutureCallback;
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.ListenableFuture;
-import com.google.common.util.concurrent.SettableFuture;
+import com.google.common.util.concurrent.*;
+
 import java.awt.image.BufferedImage;
 import java.io.Closeable;
 import java.io.File;
@@ -239,7 +237,7 @@ public class ResourcePackRepository
                 {
                     settablefuture.setException(p_onFailure_1_);
                 }
-            });
+            }, MoreExecutors.directExecutor());
             ListenableFuture listenablefuture = this.field_177322_i;
             ListenableFuture listenablefuture11 = listenablefuture;
             return listenablefuture11;

@@ -35,6 +35,9 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 import javax.imageio.ImageIO;
+
+import me.felix.tired.bridge.Managers;
+import me.felix.tired.modification.Module;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.audio.MusicTicker;
@@ -57,7 +60,6 @@ import net.minecraft.client.gui.achievement.GuiAchievement;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.gui.stream.GuiStreamUnavailable;
 import net.minecraft.client.main.GameConfiguration;
-import net.minecraft.client.main.Main;
 import net.minecraft.client.multiplayer.GuiConnecting;
 import net.minecraft.client.multiplayer.PlayerControllerMP;
 import net.minecraft.client.multiplayer.ServerData;
@@ -1921,6 +1923,11 @@ public class Minecraft implements IThreadListener, IPlayerUsage
                     }
                     else
                     {
+                        for(Module module : Managers.moduleManager.getModules()) {
+                            if(module.getKey() == k) {
+                                module.setToggled(!module.isToggled());
+                            }
+                        }
                         if (k == 1)
                         {
                             this.displayInGameMenu();
@@ -3210,7 +3217,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
             }
             catch (Exception exception)
             {
-                return Futures.immediateFailedCheckedFuture(exception);
+                return Futures.immediateFailedFuture(exception);
             }
         }
     }
