@@ -12,9 +12,7 @@ public class Sprint extends Module {
 
     @EventTargeto
     public void onUpdate(UpdateEvent event) {
-        if (getPlayer() != null) {
-            getPlayer().setSprinting(true);
-        }
+        player.setSprinting(true);
     }
 
     @Override
