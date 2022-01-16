@@ -3,6 +3,7 @@ package me.felix.tired.api;
 import lombok.Getter;
 import me.felix.tired.bridge.Managers;
 import me.felix.tired.bridge.event.Listener;
+import me.felix.tired.bridge.managers.ShaderManager;
 import me.felix.tired.modification.Module;
 
 import java.util.ArrayList;
@@ -15,7 +16,8 @@ public class Tired {
 
     private final Managers managers = new Managers();
     private final ArrayList<Plugin> plugins = new ArrayList<>();
-
+    @Getter
+    private final ShaderManager shaderManager = new ShaderManager();
     public Tired() {
         tired = this;
     }
