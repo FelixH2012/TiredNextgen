@@ -36,8 +36,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 import javax.imageio.ImageIO;
 
-import me.felix.tired.bridge.Managers;
+import me.felix.tired.main.Main;
 import me.felix.tired.modification.Module;
+import me.felix.tired.api.Tired;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.audio.MusicTicker;
@@ -194,7 +195,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     private static final ResourceLocation locationMojangPng = new ResourceLocation("textures/gui/title/mojang.png");
     public static final boolean isRunningOnMac = Util.getOSType() == Util.EnumOS.OSX;
 
-    public me.felix.tired.Main main = new me.felix.tired.Main();
+    public Main main = new Main();
     /** A 10MiB preallocation to ensure the heap is reasonably sized. */
     public static byte[] memoryReserve = new byte[10485760];
     private static final List<DisplayMode> macDisplayModes = Lists.newArrayList(new DisplayMode[] {new DisplayMode(2560, 1600), new DisplayMode(2880, 1800)});
@@ -1923,7 +1924,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
                     }
                     else
                     {
-                        for(Module module : Managers.moduleManager.getModules()) {
+                        for(Module module : Tired.getTired().getModules()) {
                             if(module.getKey() == k) {
                                 module.setToggled(!module.isToggled());
                             }

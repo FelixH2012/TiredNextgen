@@ -1,5 +1,6 @@
 package net.minecraft.client.entity;
 
+import me.felix.tired.bridge.event.list.UpdateEvent;
 import me.felix.tired.logger.Logger;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.MovingSoundMinecartRiding;
@@ -170,6 +171,7 @@ public class EntityPlayerSP extends AbstractClientPlayer
     {
         if (this.worldObj.isBlockLoaded(new BlockPos(this.posX, 0.0D, this.posZ)))
         {
+            new UpdateEvent().execute();
             super.onUpdate();
 
             if (this.isRiding())

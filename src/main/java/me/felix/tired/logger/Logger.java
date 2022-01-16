@@ -1,7 +1,7 @@
 package me.felix.tired.logger;
 
 import lombok.experimental.UtilityClass;
-import me.felix.tired.Main;
+import me.felix.tired.main.Main;
 import me.felix.tired.bridge.MCHook;
 import net.minecraft.util.ChatComponentText;
 
@@ -12,7 +12,6 @@ public class Logger implements MCHook {
     private final String ANSI_BLUE = "\u001B[34m";
 
     public enum LoggingType {
-
         CONSOLE,
         PRIVATE_CHAT,
         INGAME_CHAT
@@ -21,13 +20,13 @@ public class Logger implements MCHook {
     public void doLog(String text, LoggingType loggingType) {
         switch (loggingType) {
             case CONSOLE:
-                System.out.println("[" + ANSI_BLUE + Main.CLIENT_NAME + ANSI_RESET + "] " + text);
+                System.out.println("[" + ANSI_BLUE + Main.NAME + ANSI_RESET + "] " + text);
                 break;
             case PRIVATE_CHAT:
-                MC.ingameGUI.getChatGUI().printChatMessage(new ChatComponentText("§8[" + "§c" + Main.CLIENT_NAME + "§8] §f" + text));
+                MC.ingameGUI.getChatGUI().printChatMessage(new ChatComponentText("§8[" + "§c" + Main.NAME + "§8] §f" + text));
                 break;
             case INGAME_CHAT:
-                MC.thePlayer.sendChatMessage(text);
+                player.sendChatMessage(text);
                 break;
         }
     }

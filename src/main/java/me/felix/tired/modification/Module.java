@@ -2,41 +2,57 @@ package me.felix.tired.modification;
 
 import lombok.Getter;
 import lombok.Setter;
+import me.felix.tired.bridge.event.Listener;
+import me.felix.tired.api.Tired;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 @Getter
 @Setter
-public abstract class Module {
+public abstract class Module implements Listener {
 
-    public final String name = getClass().getAnnotation(Info.class).name();
+    private final String name;
+    private final ModuleCategory category;
+    private int key;
 
-    public int key = getClass().getAnnotation(Info.class).key();
+    boolean toggled;
 
-    public final ModuleCategory moduleCategory = getClass().getAnnotation(Info.class).category();
+    public Module() {
+        final Info info = getClass().getAnnotation(Info.class);
+        this.name = info.name();
+        this.category = info.category();
+        this.key = info.defaultKey();
+    }
 
-    private boolean state;
+    public boolean isToggled() {
+        return toggled;
+    }
 
-    public abstract void onState();
-
-    public abstract void onUndo();
-
-    public void executeMod() {
-        if (!state) {
-            doEvent();
-            setState(true);
-            return;
+    public void setToggled(boolean state) {
+        this.toggled = state;
+        if (state) {
+            onEnable();
+            Tired.addListener(this.getClass());
+        } else {
+            onDisable();
+            Tired.removeListener(this.getClass());
         }
-        undoEvent();
-        setState(false);
     }
 
-    public void doEvent() {
-        //   EventManager.register(this);
-        this.onState();
-    }
+    public abstract void onEnable();
 
-    public void undoEvent() {
-        //EventManager.unregister(this);
-        this.onUndo();
-    }
+    public abstract void onDisable();
 
+    @Retention(RetentionPolicy.RUNTIME)
+    @Target(ElementType.TYPE)
+    public @interface Info {
+        String name();
+
+        ModuleCategory category();
+
+        int defaultKey() default -1;
+    }
 }

@@ -10,6 +10,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.Callable;
+
+import me.felix.tired.bridge.PlayerHandler;
+import me.felix.tired.bridge.event.list.RotationEvent;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
 import net.minecraft.block.material.Material;
@@ -1307,6 +1310,11 @@ public class EntityRenderer implements IResourceManagerReloadListener
                 this.smoothCamPitch = 0.0F;
                 this.mc.thePlayer.setAngles(f2, f3 * (float)i);
             }
+            PlayerHandler.prevYaw = PlayerHandler.yaw;
+            PlayerHandler.prevPitch = PlayerHandler.pitch;
+            final RotationEvent rotationEvent = new RotationEvent(mc.thePlayer.rotationYaw, mc.thePlayer.rotationPitch).execute();
+            PlayerHandler.yaw = rotationEvent.getYaw();
+            PlayerHandler.pitch = rotationEvent.getYaw();
         }
 
         this.mc.mcProfiler.endSection();
