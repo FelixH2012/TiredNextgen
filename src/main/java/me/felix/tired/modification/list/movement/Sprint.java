@@ -1,6 +1,7 @@
 package me.felix.tired.modification.list.movement;
 
 import me.felix.tired.bridge.event.EventTargeto;
+import me.felix.tired.bridge.event.list.RotationEvent;
 import me.felix.tired.bridge.event.list.UpdateEvent;
 import me.felix.tired.modification.Module;
 import me.felix.tired.modification.ModuleCategory;
@@ -11,9 +12,7 @@ public class Sprint extends Module {
 
     @EventTargeto
     public void onUpdate(UpdateEvent event) {
-        if (player != null) {
-            player.setSprinting(true);
-        }
+        player.setSprinting(true);
     }
 
     @Override

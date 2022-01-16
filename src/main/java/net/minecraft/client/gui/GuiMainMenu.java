@@ -11,9 +11,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import me.felix.tired.api.Tired;
-import me.felix.tired.bridge.shader.shaders.BackGroundShader;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -42,7 +39,7 @@ import org.lwjgl.util.glu.Project;
 
 public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
 {
-
+    private static final AtomicInteger field_175373_f = new AtomicInteger(0);
     private static final Logger logger = LogManager.getLogger();
     private static final Random RANDOM = new Random();
 
@@ -121,13 +118,18 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
 
             if (!list.isEmpty())
             {
-                do {
-                    this.splashText = (String) list.get(RANDOM.nextInt(list.size()));
+                while (true)
+                {
+                    this.splashText = (String)list.get(RANDOM.nextInt(list.size()));
 
-                } while (this.splashText.hashCode() == 125780783);
+                    if (this.splashText.hashCode() != 125780783)
+                    {
+                        break;
+                    }
+                }
             }
         }
-        catch (IOException ignored)
+        catch (IOException var12)
         {
             ;
         }
@@ -386,14 +388,260 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         }
     }
 
+    /**
+     * Draws the main menu panorama
+     */
+    private void drawPanorama(int p_73970_1_, int p_73970_2_, float p_73970_3_)
+    {
+        Tessellator tessellator = Tessellator.getInstance();
+        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+        GlStateManager.matrixMode(5889);
+        GlStateManager.pushMatrix();
+        GlStateManager.loadIdentity();
+        Project.gluPerspective(120.0F, 1.0F, 0.05F, 10.0F);
+        GlStateManager.matrixMode(5888);
+        GlStateManager.pushMatrix();
+        GlStateManager.loadIdentity();
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        GlStateManager.rotate(180.0F, 1.0F, 0.0F, 0.0F);
+        GlStateManager.rotate(90.0F, 0.0F, 0.0F, 1.0F);
+        GlStateManager.enableBlend();
+        GlStateManager.disableAlpha();
+        GlStateManager.disableCull();
+        GlStateManager.depthMask(false);
+        GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+        int i = 8;
+        int j = 64;
+        CustomPanoramaProperties custompanoramaproperties = CustomPanorama.getCustomPanoramaProperties();
 
+        if (custompanoramaproperties != null)
+        {
+            j = custompanoramaproperties.getBlur1();
+        }
+
+        for (int k = 0; k < j; ++k)
+        {
+            GlStateManager.pushMatrix();
+            float f = ((float)(k % i) / (float)i - 0.5F) / 64.0F;
+            float f1 = ((float)(k / i) / (float)i - 0.5F) / 64.0F;
+            float f2 = 0.0F;
+            GlStateManager.translate(f, f1, f2);
+            GlStateManager.rotate(MathHelper.sin(((float)this.panoramaTimer + p_73970_3_) / 400.0F) * 25.0F + 20.0F, 1.0F, 0.0F, 0.0F);
+            GlStateManager.rotate(-((float)this.panoramaTimer + p_73970_3_) * 0.1F, 0.0F, 1.0F, 0.0F);
+
+            for (int l = 0; l < 6; ++l)
+            {
+                GlStateManager.pushMatrix();
+
+                if (l == 1)
+                {
+                    GlStateManager.rotate(90.0F, 0.0F, 1.0F, 0.0F);
+                }
+
+                if (l == 2)
+                {
+                    GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
+                }
+
+                if (l == 3)
+                {
+                    GlStateManager.rotate(-90.0F, 0.0F, 1.0F, 0.0F);
+                }
+
+                if (l == 4)
+                {
+                    GlStateManager.rotate(90.0F, 1.0F, 0.0F, 0.0F);
+                }
+
+                if (l == 5)
+                {
+                    GlStateManager.rotate(-90.0F, 1.0F, 0.0F, 0.0F);
+                }
+
+                ResourceLocation[] aresourcelocation = titlePanoramaPaths;
+
+                if (custompanoramaproperties != null)
+                {
+                    aresourcelocation = custompanoramaproperties.getPanoramaLocations();
+                }
+
+                this.mc.getTextureManager().bindTexture(aresourcelocation[l]);
+                worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181709_i);
+                int i1 = 255 / (k + 1);
+                float f3 = 0.0F;
+                worldrenderer.func_181662_b(-1.0D, -1.0D, 1.0D).func_181673_a(0.0D, 0.0D).func_181669_b(255, 255, 255, i1).func_181675_d();
+                worldrenderer.func_181662_b(1.0D, -1.0D, 1.0D).func_181673_a(1.0D, 0.0D).func_181669_b(255, 255, 255, i1).func_181675_d();
+                worldrenderer.func_181662_b(1.0D, 1.0D, 1.0D).func_181673_a(1.0D, 1.0D).func_181669_b(255, 255, 255, i1).func_181675_d();
+                worldrenderer.func_181662_b(-1.0D, 1.0D, 1.0D).func_181673_a(0.0D, 1.0D).func_181669_b(255, 255, 255, i1).func_181675_d();
+                tessellator.draw();
+                GlStateManager.popMatrix();
+            }
+
+            GlStateManager.popMatrix();
+            GlStateManager.colorMask(true, true, true, false);
+        }
+
+        worldrenderer.setTranslation(0.0D, 0.0D, 0.0D);
+        GlStateManager.colorMask(true, true, true, true);
+        GlStateManager.matrixMode(5889);
+        GlStateManager.popMatrix();
+        GlStateManager.matrixMode(5888);
+        GlStateManager.popMatrix();
+        GlStateManager.depthMask(true);
+        GlStateManager.enableCull();
+        GlStateManager.enableDepth();
+    }
+
+    /**
+     * Rotate and blurs the skybox view in the main menu
+     */
+    private void rotateAndBlurSkybox(float p_73968_1_)
+    {
+        this.mc.getTextureManager().bindTexture(this.backgroundTexture);
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR);
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR);
+        GL11.glCopyTexSubImage2D(GL11.GL_TEXTURE_2D, 0, 0, 0, 0, 0, 256, 256);
+        GlStateManager.enableBlend();
+        GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+        GlStateManager.colorMask(true, true, true, false);
+        Tessellator tessellator = Tessellator.getInstance();
+        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181709_i);
+        GlStateManager.disableAlpha();
+        int i = 3;
+        int j = 3;
+        CustomPanoramaProperties custompanoramaproperties = CustomPanorama.getCustomPanoramaProperties();
+
+        if (custompanoramaproperties != null)
+        {
+            j = custompanoramaproperties.getBlur2();
+        }
+
+        for (int k = 0; k < j; ++k)
+        {
+            float f = 1.0F / (float)(k + 1);
+            int l = this.width;
+            int i1 = this.height;
+            float f1 = (float)(k - i / 2) / 256.0F;
+            worldrenderer.func_181662_b((double)l, (double)i1, (double)this.zLevel).func_181673_a((double)(0.0F + f1), 1.0D).func_181666_a(1.0F, 1.0F, 1.0F, f).func_181675_d();
+            worldrenderer.func_181662_b((double)l, 0.0D, (double)this.zLevel).func_181673_a((double)(1.0F + f1), 1.0D).func_181666_a(1.0F, 1.0F, 1.0F, f).func_181675_d();
+            worldrenderer.func_181662_b(0.0D, 0.0D, (double)this.zLevel).func_181673_a((double)(1.0F + f1), 0.0D).func_181666_a(1.0F, 1.0F, 1.0F, f).func_181675_d();
+            worldrenderer.func_181662_b(0.0D, (double)i1, (double)this.zLevel).func_181673_a((double)(0.0F + f1), 0.0D).func_181666_a(1.0F, 1.0F, 1.0F, f).func_181675_d();
+        }
+
+        tessellator.draw();
+        GlStateManager.enableAlpha();
+        GlStateManager.colorMask(true, true, true, true);
+    }
+
+    /**
+     * Renders the skybox in the main menu
+     */
+    private void renderSkybox(int p_73971_1_, int p_73971_2_, float p_73971_3_)
+    {
+        this.mc.getFramebuffer().unbindFramebuffer();
+        GlStateManager.viewport(0, 0, 256, 256);
+        this.drawPanorama(p_73971_1_, p_73971_2_, p_73971_3_);
+        this.rotateAndBlurSkybox(p_73971_3_);
+        int i = 3;
+        CustomPanoramaProperties custompanoramaproperties = CustomPanorama.getCustomPanoramaProperties();
+
+        if (custompanoramaproperties != null)
+        {
+            i = custompanoramaproperties.getBlur3();
+        }
+
+        for (int j = 0; j < i; ++j)
+        {
+            this.rotateAndBlurSkybox(p_73971_3_);
+            this.rotateAndBlurSkybox(p_73971_3_);
+        }
+
+        this.mc.getFramebuffer().bindFramebuffer(true);
+        GlStateManager.viewport(0, 0, this.mc.displayWidth, this.mc.displayHeight);
+        float f2 = this.width > this.height ? 120.0F / (float)this.width : 120.0F / (float)this.height;
+        float f = (float)this.height * f2 / 256.0F;
+        float f1 = (float)this.width * f2 / 256.0F;
+        int k = this.width;
+        int l = this.height;
+        Tessellator tessellator = Tessellator.getInstance();
+        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181709_i);
+        worldrenderer.func_181662_b(0.0D, (double)l, (double)this.zLevel).func_181673_a((double)(0.5F - f), (double)(0.5F + f1)).func_181666_a(1.0F, 1.0F, 1.0F, 1.0F).func_181675_d();
+        worldrenderer.func_181662_b((double)k, (double)l, (double)this.zLevel).func_181673_a((double)(0.5F - f), (double)(0.5F - f1)).func_181666_a(1.0F, 1.0F, 1.0F, 1.0F).func_181675_d();
+        worldrenderer.func_181662_b((double)k, 0.0D, (double)this.zLevel).func_181673_a((double)(0.5F + f), (double)(0.5F - f1)).func_181666_a(1.0F, 1.0F, 1.0F, 1.0F).func_181675_d();
+        worldrenderer.func_181662_b(0.0D, 0.0D, (double)this.zLevel).func_181673_a((double)(0.5F + f), (double)(0.5F + f1)).func_181666_a(1.0F, 1.0F, 1.0F, 1.0F).func_181675_d();
+        tessellator.draw();
+    }
+
+    /**
+     * Draws the screen and all the components in it. Args : mouseX, mouseY, renderPartialTicks
+     */
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
+        GlStateManager.disableAlpha();
+        this.renderSkybox(mouseX, mouseY, partialTicks);
+        GlStateManager.enableAlpha();
+        Tessellator tessellator = Tessellator.getInstance();
+        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+        int i = 274;
+        int j = this.width / 2 - i / 2;
+        int k = 30;
+        int l = -2130706433;
+        int i1 = 16777215;
+        int j1 = 0;
+        int k1 = Integer.MIN_VALUE;
+        CustomPanoramaProperties custompanoramaproperties = CustomPanorama.getCustomPanoramaProperties();
 
-        Tired.getTired().getShaderManager().getBackGroundShader().renderShader(0, 0, width, height);
+        if (custompanoramaproperties != null)
+        {
+            l = custompanoramaproperties.getOverlay1Top();
+            i1 = custompanoramaproperties.getOverlay1Bottom();
+            j1 = custompanoramaproperties.getOverlay2Top();
+            k1 = custompanoramaproperties.getOverlay2Bottom();
+        }
 
+        if (l != 0 || i1 != 0)
+        {
+            this.drawGradientRect(0, 0, this.width, this.height, l, i1);
+        }
+
+        if (j1 != 0 || k1 != 0)
+        {
+            this.drawGradientRect(0, 0, this.width, this.height, j1, k1);
+        }
+
+        this.mc.getTextureManager().bindTexture(minecraftTitleTextures);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+
+        if ((double)this.updateCounter < 1.0E-4D)
+        {
+            this.drawTexturedModalRect(j + 0, k + 0, 0, 0, 99, 44);
+            this.drawTexturedModalRect(j + 99, k + 0, 129, 0, 27, 44);
+            this.drawTexturedModalRect(j + 99 + 26, k + 0, 126, 0, 3, 44);
+            this.drawTexturedModalRect(j + 99 + 26 + 3, k + 0, 99, 0, 26, 44);
+            this.drawTexturedModalRect(j + 155, k + 0, 0, 45, 155, 44);
+        }
+        else
+        {
+            this.drawTexturedModalRect(j + 0, k + 0, 0, 0, 155, 44);
+            this.drawTexturedModalRect(j + 155, k + 0, 0, 45, 155, 44);
+        }
+
+        GlStateManager.pushMatrix();
+        GlStateManager.translate((float)(this.width / 2 + 90), 70.0F, 0.0F);
+        GlStateManager.rotate(-20.0F, 0.0F, 0.0F, 1.0F);
+        float f = 1.8F - MathHelper.abs(MathHelper.sin((float)(Minecraft.getSystemTime() % 1000L) / 1000.0F * (float)Math.PI * 2.0F) * 0.1F);
+        f = f * 100.0F / (float)(this.fontRendererObj.getStringWidth(this.splashText) + 32);
+        GlStateManager.scale(f, f, f);
+        this.drawCenteredString(this.fontRendererObj, this.splashText, 0, -8, -256);
+        GlStateManager.popMatrix();
         String s = "Minecraft 1.8.9";
 
+        if (this.mc.isDemo())
+        {
+            s = s + " Demo";
+        }
 
         if (Reflector.FMLCommonHandler_getBrandings.exists())
         {

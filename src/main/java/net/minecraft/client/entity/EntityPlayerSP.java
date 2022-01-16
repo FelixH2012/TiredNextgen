@@ -1,6 +1,5 @@
 package net.minecraft.client.entity;
 
-import me.felix.tired.api.Tired;
 import me.felix.tired.bridge.event.list.UpdateEvent;
 import me.felix.tired.logger.Logger;
 import net.minecraft.client.Minecraft;
@@ -302,6 +301,7 @@ public class EntityPlayerSP extends AbstractClientPlayer
     public void sendChatMessage(String message)
     {
         if (message.startsWith(".")) {
+            Logger.doLog("Test", Logger.LoggingType.PRIVATE_CHAT);
             return;
         }
         this.sendQueue.addToSendQueue(new C01PacketChatMessage(message));
