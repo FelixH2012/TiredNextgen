@@ -7,7 +7,7 @@ import lombok.Getter;
  * mehrere ebenen des clickguis, worauf ich dann jewalig blur einzelnd usw rendern kann.
  */
 
-public abstract class Layer {
+public class Layer {
 
     public enum Layers {
         LAYER1, LAYER2
@@ -16,11 +16,13 @@ public abstract class Layer {
     @Getter
     private Layers layers;
 
-    public abstract void updateLayer(int mouseX, int mouseY);
+    public void updateLayer(int mouseX, int mouseY) {
+    }
 
-    public abstract void renderLayer1();
+    public void renderLayer1() {
+    }
 
-    public abstract void renderLayer2();
+    public void renderLayer2() {}
 
     public void renderLayers(Layers layer, int mouseX, int mouseY) {
         this.layers = layer;

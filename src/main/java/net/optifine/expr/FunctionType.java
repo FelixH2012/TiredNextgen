@@ -412,6 +412,7 @@ public enum FunctionType
         {
             FunctionType functiontype = VALUES[i];
 
+
             if (functiontype.getName().equals(str))
             {
                 return functiontype;

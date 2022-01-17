@@ -36,6 +36,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 import javax.imageio.ImageIO;
 
+import me.felix.tired.bridge.rendering.clickgui.ClickGUIRenderer;
 import me.felix.tired.main.Main;
 import me.felix.tired.modification.Module;
 import me.felix.tired.api.Tired;
@@ -1929,6 +1930,11 @@ public class Minecraft implements IThreadListener, IPlayerUsage
                                 module.setToggled(!module.isToggled());
                             }
                         }
+
+                        if (k == Keyboard.KEY_RSHIFT) {
+                            displayGuiScreen(new ClickGUIRenderer());
+                        }
+
                         if (k == 1)
                         {
                             this.displayInGameMenu();

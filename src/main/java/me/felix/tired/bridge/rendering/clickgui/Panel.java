@@ -38,7 +38,7 @@ public class Panel extends Layer implements MCHook, FontHook {
 
         final String categoryText = moduleCategory.getCleanName();
 
-        fontRenderer.drawStringWithShadow(categoryText, Clickable.calculateMiddle(categoryText, fontRenderer, x, Clickable.getWidth()), y - 2, -1);
+        fontRenderer.drawStringWithShadow(categoryText, Clickable.calculateMiddle(categoryText, fontRenderer, x, Clickable.getWidth()), y + 5, -1);
 
     }
 
@@ -49,4 +49,21 @@ public class Panel extends Layer implements MCHook, FontHook {
         Gui.drawRect(x, y, x + Clickable.getWidth(), y + Clickable.getHeight(), Integer.MIN_VALUE);
 
     }
+
+    public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
+        boolean mouseOver = (Clickable.isOver(x, y, (int) Clickable.getWidth(), (int) Clickable.getHeight(), mouseX, mouseY));
+
+        if (mouseOver) {
+            if (mouseButton == 0) {
+                this.dragX = x - mouseX;
+                this.dragY = y - mouseY;
+                this.dragging = true;
+            }
+        }
+    }
+
+    public void mouseReleased() {
+        this.dragging = false;
+    }
+
 }
