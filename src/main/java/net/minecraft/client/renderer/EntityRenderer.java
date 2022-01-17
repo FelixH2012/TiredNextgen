@@ -12,7 +12,6 @@ import java.util.Random;
 import java.util.concurrent.Callable;
 
 import me.felix.tired.bridge.PlayerHandler;
-import me.felix.tired.bridge.event.list.RotationEvent;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
 import net.minecraft.block.material.Material;
@@ -97,6 +96,7 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 import org.lwjgl.opengl.GLContext;
 import org.lwjgl.util.glu.Project;
+import tired.jdk.api.event.list.RotationEvent;
 
 public class EntityRenderer implements IResourceManagerReloadListener
 {
@@ -2686,7 +2686,7 @@ public class EntityRenderer implements IResourceManagerReloadListener
                 String s = "HD_U".replace("HD_U", "HD Ultra").replace("L", "Light");
                 String s1 = s + " " + Config.getNewRelease();
 
-                me.felix.tired.logger.Logger.doLog("New OptiFine Vers: " + s1, me.felix.tired.logger.Logger.LoggingType.CONSOLE);
+                tired.jdk.api.Logger.INSTANCE.doLog("New OptiFine Vers: " + s1, tired.jdk.api.Logger.Type.CONSOLE);
 
                 Config.setNewRelease((String)null);
             }

@@ -1,7 +1,7 @@
 package me.felix.tired.bridge.rendering.clickgui;
 
-import me.felix.tired.modification.ModuleCategory;
 import net.minecraft.client.gui.GuiScreen;
+import tired.jdk.api.abstracts.Module;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class ClickGUIRenderer extends GuiScreen {
     public ClickGUIRenderer() {
         this.panels = new ArrayList<>();
         int x = 0;
-        for (ModuleCategory category : ModuleCategory.values()) {
+        for (Module.Category category : Module.Category.values()) {
             panels.add(new Panel(20 + x, 30, category));
             x += 40;
         }

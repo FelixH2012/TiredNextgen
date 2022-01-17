@@ -6,7 +6,7 @@ open class Event {
     var canceled = false
 
     fun <T : Event> execute(): T {
-        Tired.getTired().listeners.forEach {
+        Tired.getListeners().forEach {
             for (method in it.declaredMethods) {
                 if (method.isAnnotationPresent(EventTargeto::class.java)) {
                     if(method.parameterCount == 1) {

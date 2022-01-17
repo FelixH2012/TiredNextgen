@@ -1,9 +1,9 @@
 package me.felix.tired.bridge.font;
 
-import me.felix.tired.bridge.hooks.MCHook;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import org.lwjgl.opengl.GL11;
+import tired.jdk.intern.hooks.MCHook;
 
 import java.awt.*;
 

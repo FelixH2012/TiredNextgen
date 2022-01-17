@@ -5,6 +5,7 @@ Tired is a Multithreading Minecraft modification which provides a good gaming ex
 @Tired-Client.de©
 */
 
+import me.felix.tired.bridge.managers.ShaderManager;
 import me.felix.tired.threads.MainThread;
 import me.felix.tired.threads.ManagerThread;
 import org.lwjgl.opengl.Display;
@@ -26,6 +27,7 @@ public class Main {
         Display.setTitle(NAME + " " + VERSION + " | by " + authors);
         new Thread(new MainThread()).start();
         new Thread(new ManagerThread()).start();
+        new ShaderManager();
     }
 
 }

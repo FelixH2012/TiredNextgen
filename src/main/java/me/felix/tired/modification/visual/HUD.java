@@ -1,10 +1,10 @@
 package me.felix.tired.modification.visual;
 
-import me.felix.tired.bridge.event.list.Render2DEvent;
-import me.felix.tired.bridge.hooks.FontHook;
 import tired.jdk.api.Tired;
 import tired.jdk.api.event.EventTargeto;
 import tired.jdk.api.abstracts.Module;
+import tired.jdk.api.event.list.Render2DEvent;
+import tired.jdk.intern.hooks.FontHook;
 
 @Module.Info(name = "HUD", category = Module.Category.MISC)
 public class HUD extends Module implements FontHook {

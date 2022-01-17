@@ -3,6 +3,8 @@ package tired.jdk.api
 import me.felix.tired.main.Main
 import net.minecraft.util.ChatComponentText
 import tired.jdk.intern.hooks.MCHook
+import tired.jdk.intern.hooks.MCHook.MC
+import tired.jdk.intern.hooks.MCHook.player
 
 object Logger : MCHook {
     private const val ANSI_RESET = "\u001B[0m"
@@ -15,7 +17,7 @@ object Logger : MCHook {
     fun doLog(text: String, loggingType: Type) {
         when (loggingType) {
             Type.CONSOLE -> println("[" + ANSI_BLUE + Main.NAME + ANSI_RESET + "] " + text)
-            Type.PRIVATE_CHAT -> mc.ingameGUI.chatGUI
+            Type.PRIVATE_CHAT -> MC.ingameGUI.chatGUI
                 .printChatMessage(ChatComponentText("§8[" + "§c" + Main.NAME + "§8] §f" + text))
             Type.INGAME_CHAT -> player.sendChatMessage(text)
         }

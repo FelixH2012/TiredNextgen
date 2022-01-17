@@ -1,20 +1,20 @@
 package me.felix.tired.bridge.rendering.clickgui;
 
-import me.felix.tired.bridge.hooks.FontHook;
-import me.felix.tired.bridge.hooks.MCHook;
 import me.felix.tired.bridge.rendering.clickgui.layers.Layer;
-import me.felix.tired.modification.ModuleCategory;
 import net.minecraft.client.gui.Gui;
+import tired.jdk.api.abstracts.Module;
+import tired.jdk.intern.hooks.FontHook;
+import tired.jdk.intern.hooks.MCHook;
 
 public class Panel extends Layer implements MCHook, FontHook {
 
-    private final ModuleCategory moduleCategory;
+    private final Module.Category moduleCategory;
 
     private int x, y, dragX, dragY;
 
     private boolean dragging;
 
-    public Panel(int x, int y, ModuleCategory moduleCategory) {
+    public Panel(int x, int y, Module.Category moduleCategory) {
 
         this.x = x;
         this.y = y;
@@ -36,7 +36,7 @@ public class Panel extends Layer implements MCHook, FontHook {
     @Override
     public void renderLayer1() {
 
-        final String categoryText = moduleCategory.getCleanName();
+        final String categoryText = moduleCategory.getDisplayName();
 
         fontRenderer.drawStringWithShadow(categoryText, Clickable.calculateMiddle(categoryText, fontRenderer, x, Clickable.getWidth()), y + 5, -1);
 

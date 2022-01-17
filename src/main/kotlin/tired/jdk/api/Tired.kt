@@ -30,6 +30,10 @@ object Tired {
         }.findAny().orElse(null) as T
     }
 
+    fun getListeners() : ArrayList<Class<out Listener>> {
+        return listeners
+    }
+
     fun addListener(listener: Class<out Listener>) {
         if(!listeners.contains(listener))
             listeners.add(listener)

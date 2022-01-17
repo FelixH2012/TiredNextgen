@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import me.felix.tired.api.Tired;
+import me.felix.tired.bridge.managers.ShaderManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -38,6 +38,7 @@ import org.apache.logging.log4j.Logger;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GLContext;
 import org.lwjgl.util.glu.Project;
+import tired.jdk.api.Tired;
 
 public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
 {
@@ -581,7 +582,7 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
      */
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
-        Tired.getTired().getShaderManager().getBackGroundShader().renderShader(0, 0, width, height);
+        ShaderManager.getBackGroundShader().renderShader(0, 0, width, height);
         String s = "Minecraft 1.8.9";
 
         if (this.mc.isDemo())

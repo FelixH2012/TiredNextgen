@@ -1,5 +1,6 @@
 package me.felix.tired.threads;
 
+import me.felix.tired.bridge.managers.ShaderManager;
 import org.reflections.Reflections;
 import tired.jdk.api.Tired;
 import tired.jdk.api.abstracts.Module;

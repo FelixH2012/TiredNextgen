@@ -1,11 +1,11 @@
 package net.minecraft.client.gui;
 
-import me.felix.tired.bridge.hooks.FontHook;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
+import tired.jdk.intern.hooks.FontHook;
 
 public class GuiButton extends Gui implements FontHook {
     protected static final ResourceLocation buttonTextures = new ResourceLocation("textures/gui/widgets.png");

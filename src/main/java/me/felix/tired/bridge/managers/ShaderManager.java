@@ -7,7 +7,7 @@ import me.felix.tired.bridge.shader.BackGroundShader;
 public class ShaderManager {
 
     @Getter
-    private BackGroundShader backGroundShader;
+    private static BackGroundShader backGroundShader;
 
 
     public ShaderManager() {

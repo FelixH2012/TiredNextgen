@@ -19,7 +19,7 @@ class ShaderProgram(private val fragmentName: String, private val vertexName: St
         run {
             val program = GL20.glCreateProgram()
             var vertexShaderID: Int
-            var vertexSourceCode: String?
+            var vertexSourceCode: String
             run {
                 vertexSourceCode = ShaderUtil.readShader("vertex/$vertexName")
                 vertexShaderID = OpenGlHelper.glCreateShader(OpenGlHelper.GL_VERTEX_SHADER)

@@ -3,8 +3,8 @@ package me.felix.tired.bridge.rendering.clickgui;
 import lombok.Getter;
 import lombok.experimental.UtilityClass;
 import me.felix.tired.bridge.font.FontRendering;
-import me.felix.tired.bridge.hooks.FontHook;
-import me.felix.tired.bridge.hooks.MCHook;
+import tired.jdk.intern.hooks.FontHook;
+import tired.jdk.intern.hooks.MCHook;
 
 @UtilityClass
 public class Clickable implements MCHook, FontHook {

@@ -13,7 +13,7 @@ import java.util.Objects;
 @UtilityClass
 public class ShaderUtil implements MCHook {
 
-    public Framebuffer createFramebuffer(Framebuffer framebuffer) {
+    public static Framebuffer createFramebuffer(Framebuffer framebuffer) {
         if (framebuffer == null || framebuffer.framebufferWidth != MC.displayWidth || framebuffer.framebufferHeight != MC.displayHeight) {
             if (framebuffer != null) {
                 framebuffer.deleteFramebuffer();
@@ -23,7 +23,7 @@ public class ShaderUtil implements MCHook {
         return framebuffer;
     }
 
-    public String readShader(String fileName) {
+    public static String readShader(String fileName) {
         final StringBuilder stringBuilder = new StringBuilder();
         try {
             final InputStreamReader inputStreamReader = new InputStreamReader(Objects.requireNonNull(ClassLoader.getSystemClassLoader().getResourceAsStream(String.format("assets/minecraft/shaders/client/%s", fileName))));

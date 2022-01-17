@@ -1,6 +1,6 @@
 package me.felix.tired.bridge.rendering.clickgui;
 
-import me.felix.tired.modification.Module;
+import tired.jdk.api.abstracts.Module;
 
 public class ModuleRendering {
 

@@ -38,8 +38,6 @@ import javax.imageio.ImageIO;
 
 import me.felix.tired.bridge.rendering.clickgui.ClickGUIRenderer;
 import me.felix.tired.main.Main;
-import me.felix.tired.modification.Module;
-import me.felix.tired.api.Tired;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.audio.MusicTicker;
@@ -189,6 +187,8 @@ import org.lwjgl.opengl.GLContext;
 import org.lwjgl.opengl.OpenGLException;
 import org.lwjgl.opengl.PixelFormat;
 import org.lwjgl.util.glu.GLU;
+import tired.jdk.api.Tired;
+import tired.jdk.api.abstracts.Module;
 
 public class Minecraft implements IThreadListener, IPlayerUsage
 {
@@ -1925,9 +1925,9 @@ public class Minecraft implements IThreadListener, IPlayerUsage
                     }
                     else
                     {
-                        for(Module module : Tired.getTired().getModules()) {
+                        for(Module module : Tired.INSTANCE.getModules()) {
                             if(module.getKey() == k) {
-                                module.setToggled(!module.isToggled());
+                                module.setState(!module.isToggled());
                             }
                         }
 
