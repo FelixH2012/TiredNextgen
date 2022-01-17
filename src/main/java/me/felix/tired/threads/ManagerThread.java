@@ -2,7 +2,7 @@ package me.felix.tired.threads;
 
 import org.reflections.Reflections;
 import tired.jdk.api.Tired;
-import tired.jdk.api.module.Module;
+import tired.jdk.api.abstracts.Module;
 
 public class ManagerThread extends Thread {
 
