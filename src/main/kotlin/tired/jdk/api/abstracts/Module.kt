@@ -1,4 +1,4 @@
-package tired.jdk.api.module
+package tired.jdk.api.abstracts
 
 import tired.jdk.api.Tired
 import tired.jdk.api.event.Listener

@@ -1,6 +1,6 @@
 package tired.jdk.api.event
 
-import tired.jdk.api.MCHook
+import tired.jdk.intern.hooks.MCHook
 
 interface Listener : MCHook {
 }

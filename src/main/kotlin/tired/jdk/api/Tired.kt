@@ -1,7 +1,7 @@
 package tired.jdk.api
 
 import tired.jdk.api.event.Listener
-import tired.jdk.api.module.Module
+import tired.jdk.api.abstracts.Module
 import tired.jdk.intern.Plugin
 
 object Tired {
@@ -12,6 +12,22 @@ object Tired {
 
     fun addModule(module: Module) {
         modules.add(module)
+    }
+
+    fun getModules() : ArrayList<Module> {
+        return modules
+    }
+
+    fun <T : Module?> getModule(clazz: Class<T>?): T {
+        return modules.stream().filter { module: Module ->
+            module.javaClass == clazz
+        }.findAny().orElse(null) as T
+    }
+
+    fun <T : Module?> getModule(name: String?): T {
+        return modules.stream().filter { module: Module ->
+            module.name.equals(name, true)
+        }.findAny().orElse(null) as T
     }
 
     fun addListener(listener: Class<out Listener>) {
