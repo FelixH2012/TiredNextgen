@@ -1,5 +1,7 @@
 package me.felix.tired.modification.visual;
 
+import me.felix.tired.bridge.util.BlurHelper;
+import net.minecraft.client.gui.Gui;
 import tired.jdk.api.Tired;
 import tired.jdk.api.event.EventTargeto;
 import tired.jdk.api.abstracts.Module;
@@ -11,11 +13,21 @@ public class HUD extends Module implements FontHook {
 
     @EventTargeto
     public void onRender(Render2DEvent e) {
-        int index = 0;
+        renderArray(false);
+        BlurHelper.startBlur();
+        renderArray(true);
+        BlurHelper.stopBlur();
+        renderArray(false);
+    }
+
+    private void renderArray(final boolean rectangle) {
+        int index = 3;
         for (Module module : Tired.INSTANCE.getModules()) {
             if (module.isToggled()) {
-                final double width = fontRenderer.getStringWidth(module.getName());
-                fontRenderer.drawStringWithShadow(module.getName(), width, index, -1);
+                if (rectangle) {
+                    Gui.drawRect(0, index, fontRenderer.getStringWidth(module.getName()) + 6, 11 + index, Integer.MIN_VALUE);
+                }
+                fontRenderer.drawString(module.getName(), 3, index, -1);
                 index += fontRenderer.getHeight();
             }
 

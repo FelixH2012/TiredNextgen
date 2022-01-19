@@ -9,7 +9,6 @@ public class ShaderManager {
     @Getter
     private static BackGroundShader backGroundShader;
 
-
     public ShaderManager() {
         setupShaders();
     }

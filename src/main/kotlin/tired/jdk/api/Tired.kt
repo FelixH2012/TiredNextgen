@@ -3,12 +3,14 @@ package tired.jdk.api
 import tired.jdk.api.event.Listener
 import tired.jdk.api.abstracts.Module
 import tired.jdk.intern.Plugin
+import java.awt.Font
 
 object Tired {
 
     private var listeners = ArrayList<Class<out Listener>>()
     private val modules = ArrayList<Module>()
     private val plugins = ArrayList<Plugin>()
+
 
     fun addModule(module: Module) {
         modules.add(module)

@@ -19,10 +19,19 @@ public class Layer {
     public void updateLayer(int mouseX, int mouseY) {
     }
 
+    public void renderLayer1(int mouseX, int mouseY, int x, int y) {
+    }
+
+    public void renderLayer2(int mouseX, int mouseY, int x, int y) {
+
+    }
+
     public void renderLayer1() {
     }
 
-    public void renderLayer2() {}
+    public void renderLayer2() {
+
+    }
 
     public void renderLayers(Layers layer, int mouseX, int mouseY) {
         this.layers = layer;

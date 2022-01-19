@@ -43,6 +43,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StringUtils;
 import net.minecraft.world.border.WorldBorder;
 import net.optifine.CustomColors;
+import tired.jdk.api.event.list.Render2DEvent;
 
 public class GuiIngame extends Gui
 {
@@ -378,6 +379,8 @@ public class GuiIngame extends Gui
             RenderHelper.disableStandardItemLighting();
             GlStateManager.disableRescaleNormal();
             GlStateManager.disableBlend();
+            final Render2DEvent event = new Render2DEvent(sr, partialTicks);
+            event.execute();
         }
     }
 

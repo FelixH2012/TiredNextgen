@@ -14,7 +14,7 @@
         <compilerSettings />
         <compilerArguments>
           <stringArguments>
-            <stringArg name="apiVersion" arg="1.6" />
+            <stringArg name="apiVersion" arg="1.5" />
             <stringArg name="languageVersion" arg="1.6" />
           </stringArguments>
           <arrayArguments>

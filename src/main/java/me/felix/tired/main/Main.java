@@ -5,6 +5,7 @@ Tired is a Multithreading Minecraft modification which provides a good gaming ex
 @Tired-Client.de©
 */
 
+import me.felix.tired.bridge.font.FontLoader;
 import me.felix.tired.bridge.managers.ShaderManager;
 import me.felix.tired.threads.MainThread;
 import me.felix.tired.threads.ManagerThread;
@@ -16,11 +17,13 @@ public class Main {
 
     public static final String NAME = "Tired";
     public static final String VERSION = "b69";
-    public static final String[] AUTHORS = new String[] {"Felix1337", "Kroko"};
+    public static final String[] AUTHORS = new String[]{"Felix1337", "Kroko"};
+
+    public static FontLoader fontLoader;
 
     public void start() {
         final StringJoiner authors = new StringJoiner(", ");
-        for(String author : AUTHORS) {
+        for (String author : AUTHORS) {
             authors.add(author);
         }
 
@@ -28,6 +31,7 @@ public class Main {
         new Thread(new MainThread()).start();
         new Thread(new ManagerThread()).start();
         new ShaderManager();
+        fontLoader = new FontLoader();
     }
 
 }

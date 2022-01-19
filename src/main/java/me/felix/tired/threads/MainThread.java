@@ -9,6 +9,7 @@ public class MainThread extends Thread {
     public void run() {
         Logger.INSTANCE.doLog("Initialized " + Main.NAME, Logger.Type.CONSOLE);
         Logger.INSTANCE.doLog("Tired Coded By Tired coding team, see more on: https://Tired-client.de/", Logger.Type.CONSOLE);
+        Logger.INSTANCE.doLog("Loaded fonts.", Logger.Type.CONSOLE);
         super.run();
     }
 }

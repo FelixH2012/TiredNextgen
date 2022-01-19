@@ -2,5 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/eclipse/Deobfuscator" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/eclipse/Femboy-Desktop-Flooder" vcs="Git" />
   </component>
 </project>
