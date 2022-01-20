@@ -3,6 +3,7 @@ package me.felix.tired.bridge.rendering.clickgui;
 import me.felix.tired.bridge.util.BlurHelper;
 import net.minecraft.client.gui.GuiScreen;
 import tired.jdk.api.Logger;
+import tired.jdk.api.Tired;
 import tired.jdk.api.abstracts.Module;
 
 import java.io.IOException;
@@ -19,7 +20,9 @@ public class ClickGUIRenderer extends GuiScreen {
             panels.add(new Panel(20 + x, 30, category));
             x += 40;
         }
-        Logger.INSTANCE.doLog("fuck kroko", Logger.Type.CONSOLE);
+        for (Module mod : Tired.INSTANCE.getModules()) {
+            Logger.INSTANCE.doLog("" + mod.getName(), Logger.Type.CONSOLE);
+        }
     }
 
 
