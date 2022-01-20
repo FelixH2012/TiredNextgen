@@ -15,6 +15,8 @@ import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+
+import me.felix.tired.bridge.util.BlurHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.stream.GuiTwitchUserMode;
 import net.minecraft.client.renderer.GlStateManager;
@@ -87,14 +89,19 @@ public abstract class GuiScreen extends Gui implements GuiYesNoCallback
      */
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
-        for (int i = 0; i < this.buttonList.size(); ++i)
-        {
-            ((GuiButton)this.buttonList.get(i)).drawButton(this.mc, mouseX, mouseY);
+        for (GuiButton guiButton : this.buttonList) {
+            ((GuiButton) guiButton).drawButton(this.mc, mouseX, mouseY, true);
         }
-
-        for (int j = 0; j < this.labelList.size(); ++j)
-        {
-            ((GuiLabel)this.labelList.get(j)).drawLabel(this.mc, mouseX, mouseY);
+        BlurHelper.startBlur();
+        for (GuiButton guiButton : this.buttonList) {
+            ((GuiButton) guiButton).drawButton(this.mc, mouseX, mouseY, true);
+        }
+        BlurHelper.stopBlur();
+        for (GuiButton guiButton : this.buttonList) {
+            ((GuiButton) guiButton).drawButton(this.mc, mouseX, mouseY, false);
+        }
+        for (GuiLabel guiLabel : this.labelList) {
+            ((GuiLabel) guiLabel).drawLabel(this.mc, mouseX, mouseY);
         }
     }
 

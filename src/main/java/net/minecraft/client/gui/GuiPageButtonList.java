@@ -441,7 +441,7 @@ public class GuiPageButtonList extends GuiListExtended
 
             if (!p_178024_5_)
             {
-                p_178024_1_.drawButton(this.field_178031_a, p_178024_3_, p_178024_4_);
+                p_178024_1_.drawButton(this.field_178031_a, p_178024_3_, p_178024_4_, true);
             }
         }
 

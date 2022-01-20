@@ -125,7 +125,7 @@ public class GuiKeyBindingList extends GuiListExtended
             this.btnReset.xPosition = x + 190;
             this.btnReset.yPosition = y;
             this.btnReset.enabled = this.keybinding.getKeyCode() != this.keybinding.getKeyCodeDefault();
-            this.btnReset.drawButton(GuiKeyBindingList.this.mc, mouseX, mouseY);
+            this.btnReset.drawButton(GuiKeyBindingList.this.mc, mouseX, mouseY, true);
             this.btnChangeKeyBinding.xPosition = x + 105;
             this.btnChangeKeyBinding.yPosition = y;
             this.btnChangeKeyBinding.displayString = GameSettings.getKeyDisplayString(this.keybinding.getKeyCode());
@@ -152,7 +152,7 @@ public class GuiKeyBindingList extends GuiListExtended
                 this.btnChangeKeyBinding.displayString = EnumChatFormatting.RED + this.btnChangeKeyBinding.displayString;
             }
 
-            this.btnChangeKeyBinding.drawButton(GuiKeyBindingList.this.mc, mouseX, mouseY);
+            this.btnChangeKeyBinding.drawButton(GuiKeyBindingList.this.mc, mouseX, mouseY, true);
         }
 
         public boolean mousePressed(int slotIndex, int p_148278_2_, int p_148278_3_, int p_148278_4_, int p_148278_5_, int p_148278_6_)
