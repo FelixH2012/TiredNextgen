@@ -26,7 +26,7 @@ public class ModuleRendering extends Layer implements MCHook, FontHook {
     public void updateLayer(int mouseX, int mouseY) {
 
         hover = Clickable.isOver((int) x, (int) y, (int) Clickable.getWidth(), (int) Clickable.getHeight(), mouseX, mouseY);
-
+        System.out.println(module.getName());
         super.updateLayer(mouseX, mouseY);
     }
 

@@ -22,7 +22,7 @@ public class Panel extends Layer implements MCHook, FontHook {
 
     public int mouseX, mouseY;
 
-    private ArrayList<ModuleRendering> moduleRenderingArrayList;
+    private final ArrayList<ModuleRendering> moduleRenderingArrayList;
 
     public Panel(int x, int y, Module.Category moduleCategory) {
 
@@ -34,6 +34,7 @@ public class Panel extends Layer implements MCHook, FontHook {
         for (Module module : Tired.INSTANCE.getModules()) {
             if (module.getCategory() != this.moduleCategory)
                 continue;
+            System.out.println(module);
             moduleRenderingArrayList.add(new ModuleRendering(module));
         }
 
@@ -93,12 +94,14 @@ public class Panel extends Layer implements MCHook, FontHook {
 
         this.moduleRenderingArrayList.forEach(moduleButton -> moduleButton.mouseClicked(mouseButton));
 
+        System.out.println("among");
         if (mouseOver) {
             if (mouseButton == 0) {
                 this.dragX = x - mouseX;
                 this.dragY = y - mouseY;
                 this.dragging = true;
             } else if (mouseButton == 1) {
+                System.out.println("among");
                 this.extended = !extended;
             }
 

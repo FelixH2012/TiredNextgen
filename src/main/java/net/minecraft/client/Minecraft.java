@@ -566,6 +566,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         this.checkGLError("Post startup");
         this.ingameGUI = new GuiIngame(this);
         this.main.start();
+        Tired.INSTANCE.init();
 
         if (this.serverName != null)
         {
@@ -1929,10 +1930,6 @@ public class Minecraft implements IThreadListener, IPlayerUsage
                             if(module.getKey() == k) {
                                 module.setState(!module.isToggled());
                             }
-                        }
-
-                        if (k == Keyboard.KEY_RSHIFT) {
-                            displayGuiScreen(new ClickGUIRenderer());
                         }
 
                         if (k == 1)

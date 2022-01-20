@@ -1,9 +1,10 @@
 package tired.jdk.api
 
-import tired.jdk.api.event.Listener
+import lombok.Getter
+import me.felix.tired.bridge.rendering.clickgui.ClickGUIRenderer
 import tired.jdk.api.abstracts.Module
+import tired.jdk.api.event.Listener
 import tired.jdk.intern.Plugin
-import java.awt.Font
 
 object Tired {
 
@@ -11,12 +12,19 @@ object Tired {
     private val modules = ArrayList<Module>()
     private val plugins = ArrayList<Plugin>()
 
+    @Getter
+    var clickGUIRenderer: ClickGUIRenderer? = null
+
+    fun init() {
+        clickGUIRenderer = ClickGUIRenderer()
+        clickGUIRenderer!!.add()
+    }
 
     fun addModule(module: Module) {
         modules.add(module)
     }
 
-    fun getModules() : ArrayList<Module> {
+    fun getModules(): ArrayList<Module> {
         return modules
     }
 
@@ -32,12 +40,12 @@ object Tired {
         }.findAny().orElse(null) as T
     }
 
-    fun getListeners() : ArrayList<Class<out Listener>> {
+    fun getListeners(): ArrayList<Class<out Listener>> {
         return listeners
     }
 
     fun addListener(listener: Class<out Listener>) {
-        if(!listeners.contains(listener))
+        if (!listeners.contains(listener))
             listeners.add(listener)
     }
 

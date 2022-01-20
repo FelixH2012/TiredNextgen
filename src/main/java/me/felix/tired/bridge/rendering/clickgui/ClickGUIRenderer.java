@@ -2,6 +2,7 @@ package me.felix.tired.bridge.rendering.clickgui;
 
 import me.felix.tired.bridge.util.BlurHelper;
 import net.minecraft.client.gui.GuiScreen;
+import tired.jdk.api.Logger;
 import tired.jdk.api.abstracts.Module;
 
 import java.io.IOException;
@@ -9,16 +10,18 @@ import java.util.ArrayList;
 
 public class ClickGUIRenderer extends GuiScreen {
 
-    private final ArrayList<Panel> panels;
+    private ArrayList<Panel> panels;
 
-    public ClickGUIRenderer() {
+    public void add() {
         this.panels = new ArrayList<>();
         int x = 0;
         for (Module.Category category : Module.Category.values()) {
             panels.add(new Panel(20 + x, 30, category));
             x += 40;
         }
+        Logger.INSTANCE.doLog("fuck kroko", Logger.Type.CONSOLE);
     }
+
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
@@ -50,6 +53,7 @@ public class ClickGUIRenderer extends GuiScreen {
 
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
+        System.out.println("FUCK22");
         for (Panel panel : panels) {
             panel.mouseClicked(mouseX, mouseY, mouseButton);
         }

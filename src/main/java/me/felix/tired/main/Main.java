@@ -7,6 +7,7 @@ Tired is a Multithreading Minecraft modification which provides a good gaming ex
 
 import me.felix.tired.bridge.font.FontLoader;
 import me.felix.tired.bridge.managers.ShaderManager;
+import me.felix.tired.bridge.rendering.clickgui.ClickGUIRenderer;
 import me.felix.tired.threads.MainThread;
 import me.felix.tired.threads.ManagerThread;
 import org.lwjgl.opengl.Display;
