@@ -1,5 +1,7 @@
 package net.minecraft.client.entity;
 
+import me.felix.tired.bridge.rendering.clickgui.ClickGUIRenderer;
+import me.felix.tired.modification.visual.ClickGUI;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.MovingSoundMinecartRiding;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -52,6 +54,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.IInteractionObject;
 import net.minecraft.world.World;
 import tired.jdk.api.Logger;
+import tired.jdk.api.Tired;
 import tired.jdk.api.event.list.UpdateEvent;
 
 public class EntityPlayerSP extends AbstractClientPlayer
@@ -171,6 +174,13 @@ public class EntityPlayerSP extends AbstractClientPlayer
     {
         if (this.worldObj.isBlockLoaded(new BlockPos(this.posX, 0.0D, this.posZ)))
         {
+
+            if (mc.currentScreen instanceof ClickGUIRenderer) {
+                if (Tired.INSTANCE.getModule(ClickGUI.class).isToggled()) {
+                    Tired.INSTANCE.getModule(ClickGUI.class).setState(false);
+                }
+            }
+
             new UpdateEvent().execute();
             super.onUpdate();
 

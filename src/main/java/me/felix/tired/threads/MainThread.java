@@ -1,5 +1,6 @@
 package me.felix.tired.threads;
 
+import me.felix.tired.bridge.rendering.clickgui.ClickGUIRenderer;
 import me.felix.tired.main.Main;
 import tired.jdk.api.Logger;
 

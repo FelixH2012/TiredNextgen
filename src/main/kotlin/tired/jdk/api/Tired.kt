@@ -1,7 +1,6 @@
 package tired.jdk.api
 
-import lombok.Getter
-import me.felix.tired.bridge.rendering.clickgui.ClickGUIRenderer
+
 import tired.jdk.api.abstracts.Module
 import tired.jdk.api.event.Listener
 import tired.jdk.intern.Plugin
@@ -12,13 +11,6 @@ object Tired {
     private val modules = ArrayList<Module>()
     private val plugins = ArrayList<Plugin>()
 
-    @Getter
-    var clickGUIRenderer: ClickGUIRenderer? = null
-
-    fun init() {
-        clickGUIRenderer = ClickGUIRenderer()
-        clickGUIRenderer!!.add()
-    }
 
     fun addModule(module: Module) {
         modules.add(module)

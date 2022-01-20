@@ -18,11 +18,12 @@ public class ClickGUIRenderer extends GuiScreen {
         int x = 0;
         for (Module.Category category : Module.Category.values()) {
             panels.add(new Panel(20 + x, 30, category));
-            x += 40;
+            x += 120;
         }
-        for (Module mod : Tired.INSTANCE.getModules()) {
-            Logger.INSTANCE.doLog("" + mod.getName(), Logger.Type.CONSOLE);
-        }
+
+        Logger.INSTANCE.doLog("" + Tired.INSTANCE.getModules(), Logger.Type.CONSOLE);
+
+
     }
 
 
@@ -56,7 +57,6 @@ public class ClickGUIRenderer extends GuiScreen {
 
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
-        System.out.println("FUCK22");
         for (Panel panel : panels) {
             panel.mouseClicked(mouseX, mouseY, mouseButton);
         }

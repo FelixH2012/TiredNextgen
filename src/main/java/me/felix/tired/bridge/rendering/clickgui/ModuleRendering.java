@@ -2,7 +2,6 @@ package me.felix.tired.bridge.rendering.clickgui;
 
 import me.felix.tired.bridge.rendering.clickgui.layers.Layer;
 import me.felix.tired.bridge.util.RenderUtil;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.GlStateManager;
 import tired.jdk.api.abstracts.Module;
 import tired.jdk.intern.hooks.FontHook;
@@ -26,7 +25,6 @@ public class ModuleRendering extends Layer implements MCHook, FontHook {
     public void updateLayer(int mouseX, int mouseY) {
 
         hover = Clickable.isOver((int) x, (int) y, (int) Clickable.getWidth(), (int) Clickable.getHeight(), mouseX, mouseY);
-        System.out.println(module.getName());
         super.updateLayer(mouseX, mouseY);
     }
 
