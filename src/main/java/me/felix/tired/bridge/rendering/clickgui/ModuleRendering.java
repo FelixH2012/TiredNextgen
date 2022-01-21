@@ -2,7 +2,10 @@ package me.felix.tired.bridge.rendering.clickgui;
 
 import me.felix.tired.bridge.rendering.clickgui.layers.Layer;
 import me.felix.tired.bridge.util.RenderUtil;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.util.MathHelper;
+import org.lwjgl.input.Mouse;
 import tired.jdk.api.abstracts.Module;
 import tired.jdk.intern.hooks.FontHook;
 import tired.jdk.intern.hooks.MCHook;
@@ -13,6 +16,7 @@ public class ModuleRendering extends Layer implements MCHook, FontHook {
 
     private final Module module;
 
+    public static double scaleFactor = 1;
     public double x, y;
 
     private boolean hover;
@@ -23,7 +27,8 @@ public class ModuleRendering extends Layer implements MCHook, FontHook {
 
     @Override
     public void updateLayer(int mouseX, int mouseY) {
-
+        mouseX /= ModuleRendering.scaleFactor;
+        mouseY /= ModuleRendering.scaleFactor;
         hover = Clickable.isOver((int) x, (int) y, (int) Clickable.getWidth(), (int) Clickable.getHeight(), mouseX, mouseY);
         super.updateLayer(mouseX, mouseY);
     }
@@ -55,9 +60,26 @@ public class ModuleRendering extends Layer implements MCHook, FontHook {
                 RenderUtil.drawRoundedRectangle(x, y, x + Clickable.getWidth(), y + Clickable.getHeight(), 0, new Color(31, 170, 234, 122).getRGB());
             }
 
+            int wheel = Mouse.getDWheel();
+
+            if (scaleFactor < 0) {
+                scaleFactor = 0;
+            }
+
+            if (GuiScreen.isCtrlKeyDown() && wheel > 0) {
+                scaleFactor += .1;
+            }
+
+            if (GuiScreen.isCtrlKeyDown() && wheel < 0) {
+                scaleFactor -= .1;
+            }
+
+            System.out.println(scaleFactor);
+
         }
 
         super.renderLayer2(mouseX, mouseY, x, y);
+
     }
 
     public void mouseClicked(int mouseButton) {

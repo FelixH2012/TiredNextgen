@@ -5,6 +5,7 @@ import me.felix.tired.bridge.util.RenderUtil;
 import me.felix.tired.main.Main;
 import me.felix.tired.main.ThreadGetter;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.util.MathHelper;
 import tired.jdk.api.Tired;
 import tired.jdk.api.abstracts.Module;
 import tired.jdk.intern.hooks.FontHook;
@@ -34,7 +35,6 @@ public class Panel extends Layer implements MCHook, FontHook {
         for (Module module : Tired.INSTANCE.getModules()) {
             if (module.getCategory() != this.moduleCategory)
                 continue;
-            System.out.println(module);
             moduleRenderingArrayList.add(new ModuleRendering(module));
         }
 
@@ -45,6 +45,9 @@ public class Panel extends Layer implements MCHook, FontHook {
 
         this.mouseX = mouseX;
         this.mouseY = mouseY;
+        this.mouseX /= ModuleRendering.scaleFactor;
+        this.mouseY /= ModuleRendering.scaleFactor;
+        
         for (ModuleRendering render : moduleRenderingArrayList) {
             render.updateLayer(mouseX, mouseY);
         }
@@ -65,8 +68,9 @@ public class Panel extends Layer implements MCHook, FontHook {
         if (extended) {
             int yAdditional = 0;
             for (ModuleRendering render : moduleRenderingArrayList) {
+
                 render.renderLayer1(mouseX, mouseY, x, y + 20 + yAdditional);
-                yAdditional += 20;
+                yAdditional +=  Math.round (Clickable.height);
             }
         }
     }
@@ -90,18 +94,18 @@ public class Panel extends Layer implements MCHook, FontHook {
     }
 
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
+        mouseX /= ModuleRendering.scaleFactor;
+        mouseY /= ModuleRendering.scaleFactor;
         boolean mouseOver = (Clickable.isOver(x, y, (int) Clickable.getWidth(), (int) Clickable.getHeight(), mouseX, mouseY));
 
         this.moduleRenderingArrayList.forEach(moduleButton -> moduleButton.mouseClicked(mouseButton));
 
-        System.out.println("among");
         if (mouseOver) {
             if (mouseButton == 0) {
                 this.dragX = x - mouseX;
                 this.dragY = y - mouseY;
                 this.dragging = true;
             } else if (mouseButton == 1) {
-                System.out.println("among");
                 this.extended = !extended;
             }
 
