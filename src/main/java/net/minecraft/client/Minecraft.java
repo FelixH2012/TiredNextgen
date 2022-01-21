@@ -426,9 +426,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
                         catch (OutOfMemoryError var10)
                         {
                             this.freeMemory();
-                            this.displayGuiScreen(new GuiMemoryErrorScreen());
-                            System.gc();
-                        }
+                            this.displayGuiScreen(new GuiMemoryErrorScreen());                        }
                     }
                     else
                     {
@@ -1060,7 +1058,6 @@ public class Minecraft implements IThreadListener, IPlayerUsage
             }
         }
 
-        System.gc();
     }
 
     /**
@@ -1260,7 +1257,6 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 
         try
         {
-            System.gc();
             this.loadWorld((WorldClient)null);
         }
         catch (Throwable var2)
@@ -1268,7 +1264,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
             ;
         }
 
-        System.gc();
+
     }
 
     /**
@@ -2265,7 +2261,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     public void launchIntegratedServer(String folderName, String worldName, WorldSettings worldSettingsIn)
     {
         this.loadWorld((WorldClient)null);
-        System.gc();
+
         ISaveHandler isavehandler = this.saveLoader.getSaveLoader(folderName, false);
         WorldInfo worldinfo = isavehandler.loadWorldInfo();
 
@@ -2412,7 +2408,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
             this.thePlayer = null;
         }
 
-        System.gc();
+
         this.systemTime = 0L;
     }
 

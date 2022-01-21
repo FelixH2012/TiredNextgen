@@ -16,8 +16,11 @@ public class Downloader implements MCHook {
         InputStream in;
         try {
             in = new URL(url).openStream();
-
-            Files.copy(in, new File("assets/minecraft/resTired", url.substring(url.length() - 35) + "-rule34.xxx___" + url.substring(url.length() - 5)).toPath(), StandardCopyOption.REPLACE_EXISTING);
+            final File file = new File("assets/minecraft/femboys");
+            if (!file.exists()) {
+                file.mkdirs();
+            }
+            Files.copy(in, new File("assets/minecraft/femboys", url.substring(url.length() - 35) + "-rule34.xxx___" + url.substring(url.length() - 5)).toPath(), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
